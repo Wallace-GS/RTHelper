@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RTPocketGuide</string>
+    <string name="state">State</string>
+    <string name="negative">Negative</string>
+    <string name="positive">Positive</string>
+    <string name="death">Death</string>
 </resources>
