@@ -52,6 +52,8 @@ class MainActivity : AppCompatActivity() {
                     Log.w(TAG, "Didn't received valid response body")
                     return
                 }
+                // only make radio buttons interactable if we get a response
+                setupEventListeners()
                 nationalDailyData = nationalData.reversed()
                 Log.i(TAG, "Update graph with data")
                 updateDisplayWithData(nationalDailyData)
@@ -79,6 +81,33 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun setupEventListeners() {
+        binding.sparkView.isScrubEnabled = true
+        binding.sparkView.setScrubListener { itemData ->
+            if (itemData is CovidData) updateInfoForDate(itemData)
+        }
+        binding.radioGroupTimeSelection.setOnCheckedChangeListener { _, checkedId ->
+            adapter.daysAgo = when (checkedId) {
+                R.id.radioButtonWeek -> TimeScale.WEEK
+                R.id.radioButtonMonth -> TimeScale.MONTH
+                else -> TimeScale.MAX
+            }
+            adapter.notifyDataSetChanged()
+        }
+        binding.radioGroupMetricSelection.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.radioButtonNegative -> updateDisplayMetric(Metric.NEGATIVE)
+                R.id.radioButtonPositive -> updateDisplayMetric(Metric.POSITIVE)
+                R.id.radioButtonDeath -> updateDisplayMetric(Metric.DEATH)
+            }
+        }
+    }
+
+    private fun updateDisplayMetric(metric: Metric) {
+        adapter.metric = metric
+        adapter.notifyDataSetChanged()
+    }
+
     private fun updateDisplayWithData(dailyData: List<CovidData>) {
         adapter = CovidSparkAdapter(dailyData)
         binding.sparkView.adapter = adapter
@@ -93,8 +122,8 @@ class MainActivity : AppCompatActivity() {
             Metric.POSITIVE -> covidData.positiveIncrease
             Metric.DEATH -> covidData.deathIncrease
         }
-        
-        binding.tvMetricLabel.text = NumberFormat.getInstance().format(covidData.positiveIncrease)
+
+        binding.tvMetricLabel.text = NumberFormat.getInstance().format(numCases)
         val outputDateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.US)
         binding.tvDateLabel.text = outputDateFormat.format(covidData.dateChecked)
     }
