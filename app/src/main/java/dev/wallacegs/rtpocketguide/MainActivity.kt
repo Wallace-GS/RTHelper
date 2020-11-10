@@ -10,12 +10,16 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.NumberFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 private const val TAG = "MainActivity"
 private const val BASE_URL = "https://api.covidtracking.com/v1/"
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var adapter: CovidSparkAdapter
     private lateinit var perStateDailyData: Map<String, List<CovidData>>
     private lateinit var nationalDailyData: List<CovidData>
     private lateinit var binding: ActivityMainBinding
@@ -50,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 nationalDailyData = nationalData.reversed()
                 Log.i(TAG, "Update graph with data")
+                updateDisplayWithData(nationalDailyData)
             }
         })
 
@@ -72,5 +77,25 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "Update spinner with state names")
             }
         })
+    }
+
+    private fun updateDisplayWithData(dailyData: List<CovidData>) {
+        adapter = CovidSparkAdapter(dailyData)
+        binding.sparkView.adapter = adapter
+        binding.radioButtonPositive.isChecked = true
+        binding.radioButtonMax.isChecked = true
+        updateInfoForDate(dailyData.last())
+    }
+
+    private fun updateInfoForDate(covidData: CovidData) {
+        val numCases = when (adapter.metric) {
+            Metric.NEGATIVE -> covidData.negativeIncrease
+            Metric.POSITIVE -> covidData.positiveIncrease
+            Metric.DEATH -> covidData.deathIncrease
+        }
+        
+        binding.tvMetricLabel.text = NumberFormat.getInstance().format(covidData.positiveIncrease)
+        val outputDateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.US)
+        binding.tvDateLabel.text = outputDateFormat.format(covidData.dateChecked)
     }
 }
