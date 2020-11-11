@@ -3,6 +3,8 @@ package dev.wallacegs.rtpocketguide
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.ColorInt
+import androidx.core.content.ContextCompat
 import com.google.gson.GsonBuilder
 import dev.wallacegs.rtpocketguide.databinding.ActivityMainBinding
 import retrofit2.Call
@@ -19,6 +21,7 @@ private const val BASE_URL = "https://api.covidtracking.com/v1/"
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var currentlyShownData: List<CovidData>
     private lateinit var adapter: CovidSparkAdapter
     private lateinit var perStateDailyData: Map<String, List<CovidData>>
     private lateinit var nationalDailyData: List<CovidData>
@@ -104,16 +107,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateDisplayMetric(metric: Metric) {
+        val color = when (metric) {
+            Metric.NEGATIVE -> R.color.colorNegative
+            Metric.POSITIVE -> R.color.colorPositive
+            Metric.DEATH -> R.color.colorDeath
+        }
+        @ColorInt val colorInt = ContextCompat.getColor(this, color)
+        binding.sparkView.lineColor = colorInt
+        binding.tvMetricLabel.setTextColor(colorInt)
+
         adapter.metric = metric
         adapter.notifyDataSetChanged()
+        updateInfoForDate(currentlyShownData.last())
     }
 
     private fun updateDisplayWithData(dailyData: List<CovidData>) {
+        currentlyShownData = dailyData
         adapter = CovidSparkAdapter(dailyData)
         binding.sparkView.adapter = adapter
         binding.radioButtonPositive.isChecked = true
         binding.radioButtonMax.isChecked = true
-        updateInfoForDate(dailyData.last())
+        updateDisplayMetric(Metric.POSITIVE)
     }
 
     private fun updateInfoForDate(covidData: CovidData) {
