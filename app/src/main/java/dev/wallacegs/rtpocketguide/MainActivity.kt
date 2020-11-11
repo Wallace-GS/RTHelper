@@ -18,6 +18,7 @@ import java.util.*
 
 private const val TAG = "MainActivity"
 private const val BASE_URL = "https://api.covidtracking.com/v1/"
+private const val ALL_STATES = "Nationwide"
 
 class MainActivity : AppCompatActivity() {
 
@@ -78,10 +79,27 @@ class MainActivity : AppCompatActivity() {
                     Log.w(TAG, "Didn't received valid response body")
                     return
                 }
+                // perStateDailyData (key : value) -> state : List<CovidData>
                 perStateDailyData = statesData.reversed().groupBy { it.state }
                 Log.i(TAG, "Update spinner with state names")
+                updateSpinnerWithStateData(perStateDailyData.keys)
             }
         })
+    }
+
+    private fun updateSpinnerWithStateData(states: Set<String>) {
+        Log.i(TAG, "states: $states")
+        val stateList = states.toMutableList()
+        stateList.sort()
+        Log.i(TAG, "states: $stateList")
+        stateList.add(0, ALL_STATES)
+
+        binding.spinner.attachDataSource(stateList)
+        binding.spinner.setOnSpinnerItemSelectedListener { parent, _, position, _ ->
+            val selectedState = parent.getItemAtPosition(position) as String
+            val selectedData = perStateDailyData[selectedState] ?: nationalDailyData
+            updateDisplayWithData(selectedData)
+        }
     }
 
     private fun setupEventListeners() {

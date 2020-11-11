@@ -2,7 +2,21 @@
 
 RT Helper automates some calculations for Respiratory Therapists, which would normally be done by hand. The app also includes a handy interactable chart which shows both state-wide and national COVID-19 data.
 
+## Part 2 - Calculations
+
+### User Stories
+
+- [ ] Refactor into “One-Activity-Multiple-Fragments” pattern.
+- [ ] User can access navigation drawer.
+- [ ] User can make the following calculations:
+  - [ ] ABG
+  - [ ] Minute Volume
+  - [ ] Desired FiO2
+  - [ ] Ideal Body Weight
+
 ## Part 1 - Chart
+
+<img src='./rt1.gif' width='250'/>
 
 ### User Stories
 
@@ -17,15 +31,9 @@ RT Helper automates some calculations for Respiratory Therapists, which would no
   - [x] Deaths
 - [x] User can interact with the chart.
 - [x] User can view national data.
-- [ ] User can view state-wide data.
-- [ ] User can select state from a Spinner.
+- [x] User can view state-wide data.
+- [x] User can select state from a Spinner.
 - [ ] App has been properly styled.
-
-### Video Walkthrough
-
-Here's a walkthrough of implemented user stories:
-
-<img src='./rt1.gif' width='250'/>
 
 ### Open-source libraries used
 
