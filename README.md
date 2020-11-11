@@ -4,14 +4,16 @@ RT Helper automates some calculations for Respiratory Therapists, which would no
 
 ## Part 2 - Calculations
 
+<img src='./rt2.gif' width='250'/>
+
 ### User Stories
 
-- [ ] Refactor into “One-Activity-Multiple-Fragments” pattern.
-- [ ] User can access navigation drawer.
+- [x] Refactor into “One-Activity-Multiple-Fragments” pattern.
+- [x] User can access navigation drawer.
+- [ ] Navigation drawer contains header.
 - [ ] User can make the following calculations:
   - [ ] ABG
-  - [ ] Minute Volume
-  - [ ] Desired FiO2
+  - [x] Mean Arterial Pressure
   - [ ] Ideal Body Weight
 
 ## Part 1 - Chart

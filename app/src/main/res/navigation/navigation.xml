@@ -8,4 +8,9 @@
         android:id="@+id/chartFragment"
         android:name="dev.wallacegs.rtpocketguide.ChartFragment"
         android:label="ChartFragment" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="dev.wallacegs.rtpocketguide.MAPFragment"
+        android:label="fragment_m_a_p"
+        tools:layout="@layout/fragment_m_a_p" />
 </navigation>
