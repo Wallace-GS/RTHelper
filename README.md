@@ -4,7 +4,7 @@ RT Helper automates some calculations for Respiratory Therapists, which would no
 
 ## Part 2 - Calculations
 
-<img src='./rt2.gif' width='250'/>
+<img src='./rtp2.gif' width='250'/>
 
 ### User Stories
 
