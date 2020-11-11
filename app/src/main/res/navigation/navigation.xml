@@ -7,10 +7,10 @@
     <fragment
         android:id="@+id/chartFragment"
         android:name="dev.wallacegs.rtpocketguide.ChartFragment"
-        android:label="ChartFragment" />
+        android:label="COVID-19 Data" />
     <fragment
         android:id="@+id/mapFragment"
         android:name="dev.wallacegs.rtpocketguide.MAPFragment"
-        android:label="fragment_m_a_p"
+        android:label="Calculate MAP"
         tools:layout="@layout/fragment_m_a_p" />
 </navigation>
