@@ -12,8 +12,8 @@ RT Helper automates some calculations for Respiratory Therapists, which would no
   - [x] This month
   - [x] This week
 - [x] User can view the following data:
-  - [x] Positives
-  - [x] Negatives
+  - [x] Positive cases
+  - [x] Negative cases
   - [x] Deaths
 - [x] User can interact with the chart.
 - [x] User can view national data.
