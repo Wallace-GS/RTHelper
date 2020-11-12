@@ -10,7 +10,7 @@ RT Helper automates some calculations for Respiratory Therapists, which would no
 
 - [x] Refactor into “One-Activity-Multiple-Fragments” pattern.
 - [x] User can access navigation drawer.
-- [ ] Navigation drawer contains header.
+- [x] Navigation drawer contains header.
 - [ ] User can make the following calculations:
   - [ ] ABG
   - [x] Mean Arterial Pressure

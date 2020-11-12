@@ -8,10 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorNegative">#008911</color>
-    <color name="colorPositive">#FF7B00</color>
+    <color name="colorPositive">#f7c325</color>
     <color name="colorDeath">#A9002B</color>
     <color name="blue700">#344955</color>
     <color name="blue800">#232F34</color>
+    <color name="blue600">#4A6572</color>
     <color name="orange500">#F9AA33</color>
     <color name="colorBackgroundShade">#edf0f2</color>
     <color name="colorBackground">#d2dbe0</color>
