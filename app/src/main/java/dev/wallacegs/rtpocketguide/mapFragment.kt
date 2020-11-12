@@ -2,26 +2,27 @@ package dev.wallacegs.rtpocketguide
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
-import dev.wallacegs.rtpocketguide.databinding.FragmentMAPBinding
+import dev.wallacegs.rtpocketguide.databinding.FragmentMapBinding
 
 private const val TAG = "MAPFragment"
 
 class MAPFragment : Fragment() {
 
-    private var _binding: FragmentMAPBinding? = null
+    private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMAPBinding.inflate(inflater, container, false)
+        _binding = FragmentMapBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -38,41 +39,23 @@ class MAPFragment : Fragment() {
             binding.btnCalculate.isEnabled = true
             val systolic = binding.etSystolic.text.toString().toFloat()
             val diastolic = binding.etDiastolic.text.toString().toFloat()
-            updateDisplay(true)
             calculateMAP(systolic, diastolic)
+            showResults()
         }
         binding.btnRecalculate.setOnClickListener {
-            updateDisplay(false)
+            hideResults()
         }
     }
 
-    private fun updateDisplay(updateFlag: Boolean) {
-        if (updateFlag) {
-            binding.tvSystolic.visibility = View.INVISIBLE
-            binding.etSystolic.visibility = View.INVISIBLE
-            binding.tvDiastolic.visibility = View.INVISIBLE
-            binding.etDiastolic.visibility = View.INVISIBLE
-            binding.tvInstruction.visibility = View.INVISIBLE
-            binding.btnCalculate.visibility = View.INVISIBLE
+    private fun hideResults() {
+        binding.resultGroup.visibility = View.INVISIBLE
+        binding.mainGroup.visibility = View.VISIBLE
+        resetResults()
+    }
 
-            binding.tvNumResult.visibility = View.VISIBLE
-            binding.tvResult.visibility = View.VISIBLE
-            binding.tvRange.visibility = View.VISIBLE
-            binding.btnRecalculate.visibility = View.VISIBLE
-        } else {
-            binding.tvSystolic.visibility = View.VISIBLE
-            binding.etSystolic.visibility = View.VISIBLE
-            binding.tvDiastolic.visibility = View.VISIBLE
-            binding.etDiastolic.visibility = View.VISIBLE
-            binding.tvInstruction.visibility = View.VISIBLE
-            binding.btnCalculate.visibility = View.VISIBLE
-
-            binding.tvNumResult.visibility = View.INVISIBLE
-            binding.tvResult.visibility = View.INVISIBLE
-            binding.tvRange.visibility = View.INVISIBLE
-            binding.btnRecalculate.visibility = View.INVISIBLE
-            resetResults()
-        }
+    private fun showResults() {
+        binding.mainGroup.visibility = View.INVISIBLE
+        binding.resultGroup.visibility = View.VISIBLE
     }
 
     private fun resetResults() {

@@ -12,5 +12,5 @@
         android:id="@+id/mapFragment"
         android:name="dev.wallacegs.rtpocketguide.MAPFragment"
         android:label="Calculate MAP"
-        tools:layout="@layout/fragment_m_a_p" />
+        tools:layout="@layout/fragment_map" />
 </navigation>

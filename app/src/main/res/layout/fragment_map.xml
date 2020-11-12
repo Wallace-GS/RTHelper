@@ -146,5 +146,18 @@
         app:layout_constraintStart_toStartOf="@+id/btnCalculate"
         app:layout_constraintTop_toTopOf="@+id/btnCalculate" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/resultGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:constraint_referenced_ids="tvNumResult, tvResult, tvRange, btnRecalculate" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/mainGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="tvSystolic, etSystolic, tvDiastolic, etDiastolic, tvInstruction, btnCalculate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
