@@ -13,6 +13,7 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import dev.wallacegs.rtpocketguide.R
 import dev.wallacegs.rtpocketguide.databinding.FragmentMapBinding
 import dev.wallacegs.rtpocketguide.hideKeyboard
@@ -23,12 +24,17 @@ class MAPFragment : Fragment() {
 
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
+    private lateinit var viewModel: MapViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMapBinding.inflate(inflater, container, false)
+
+        Log.i(TAG, "Called ViewModelProvider()")
+        viewModel = ViewModelProvider(this).get(MapViewModel::class.java)
+
         return binding.root
     }
 
