@@ -16,4 +16,7 @@
     <string name="diastolic_pressure">Diastolic Pressure</string>
     <string name="calculate">Calculate</string>
     <string name="recalculate">Recalculate</string>
+    <string name="low">Low</string>
+    <string name="high">High</string>
+    <string name="normal">Normal</string>
 </resources>

@@ -76,6 +76,21 @@ class MAPFragment : Fragment() {
         binding.etDiastolic.text.clear()
     }
 
+    private fun setResultLow(colorInt: Int?) {
+        binding.tvResult.text = getString(R.string.low)
+        if (colorInt != null) binding.tvResult.setTextColor(colorInt)
+    }
+
+    private fun setResultHigh(colorInt: Int?) {
+        binding.tvResult.text = getString(R.string.high)
+        if (colorInt != null) binding.tvResult.setTextColor(colorInt)
+    }
+
+    private fun setResultNormal(colorInt: Int?) {
+        binding.tvResult.text = getString(R.string.normal)
+        if (colorInt != null) binding.tvResult.setTextColor(colorInt)
+    }
+
     @SuppressLint("SetTextI18n")
     private fun calculateMAP(systolic: Float, diastolic: Float) {
         val result = ((systolic + (2 * diastolic)) / 3)
@@ -86,14 +101,11 @@ class MAPFragment : Fragment() {
         @ColorInt val colorInt = context?.let { ContextCompat.getColor(it, color) }
 
         if (result < 80) {
-            binding.tvResult.text = "Low"
-            if (colorInt != null) binding.tvResult.setTextColor(colorInt)
+            setResultLow(colorInt)
         } else if (result > 100) {
-            binding.tvResult.text = "High"
-            if (colorInt != null) binding.tvResult.setTextColor(colorInt)
+            setResultHigh(colorInt)
         } else {
-            binding.tvResult.text = "Normal"
-            if (colorInt != null) binding.tvResult.setTextColor(colorInt)
+            setResultNormal(colorInt)
         }
         binding.tvNumResult.text = "%.1f mmHg".format(result)
     }

@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     ext {
-        version_navigation = '2.3.1'
+        nav_version = '2.3.1'
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.1'
