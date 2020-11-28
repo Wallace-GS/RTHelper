@@ -1,4 +1,4 @@
-package dev.wallacegs.rtpocketguide
+package dev.wallacegs.rtpocketguide.ui.chart
 
 enum class Metric {
     NEGATIVE, POSITIVE, DEATH

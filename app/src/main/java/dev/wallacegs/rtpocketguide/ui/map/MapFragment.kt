@@ -1,4 +1,4 @@
-package dev.wallacegs.rtpocketguide
+package dev.wallacegs.rtpocketguide.ui.map
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -13,7 +13,9 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
+import dev.wallacegs.rtpocketguide.R
 import dev.wallacegs.rtpocketguide.databinding.FragmentMapBinding
+import dev.wallacegs.rtpocketguide.hideKeyboard
 
 private const val TAG = "MAPFragment"
 

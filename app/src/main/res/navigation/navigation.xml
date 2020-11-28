@@ -6,11 +6,11 @@
     app:startDestination="@id/chartFragment">
     <fragment
         android:id="@+id/chartFragment"
-        android:name="dev.wallacegs.rtpocketguide.ChartFragment"
+        android:name="dev.wallacegs.rtpocketguide.ui.chart.ChartFragment"
         android:label="COVID-19 Data" />
     <fragment
         android:id="@+id/mapFragment"
-        android:name="dev.wallacegs.rtpocketguide.MAPFragment"
+        android:name="dev.wallacegs.rtpocketguide.ui.map.MAPFragment"
         android:label="Calculate MAP"
         tools:layout="@layout/fragment_map" />
 </navigation>

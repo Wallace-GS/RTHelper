@@ -1,5 +1,6 @@
-package dev.wallacegs.rtpocketguide
+package dev.wallacegs.rtpocketguide.data
 
+import dev.wallacegs.rtpocketguide.data.CovidData
 import retrofit2.Call
 import retrofit2.http.GET
 

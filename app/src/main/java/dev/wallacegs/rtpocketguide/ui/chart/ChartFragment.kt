@@ -1,4 +1,4 @@
-package dev.wallacegs.rtpocketguide
+package dev.wallacegs.rtpocketguide.ui.chart
 
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import com.google.gson.GsonBuilder
+import dev.wallacegs.rtpocketguide.*
+import dev.wallacegs.rtpocketguide.data.CovidData
+import dev.wallacegs.rtpocketguide.data.CovidService
 import dev.wallacegs.rtpocketguide.databinding.FragmentChartBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -61,8 +64,8 @@ class ChartFragment : Fragment() {
             }
 
             override fun onResponse(
-                call: Call<List<CovidData>>,
-                response: Response<List<CovidData>>
+                    call: Call<List<CovidData>>,
+                    response: Response<List<CovidData>>
             ) {
                 Log.i(TAG, "onResponse: $response")
                 val nationalData = response.body()
@@ -84,8 +87,8 @@ class ChartFragment : Fragment() {
             }
 
             override fun onResponse(
-                call: Call<List<CovidData>>,
-                response: Response<List<CovidData>>
+                    call: Call<List<CovidData>>,
+                    response: Response<List<CovidData>>
             ) {
                 Log.i(TAG, "onResponse: $response")
                 val statesData = response.body()

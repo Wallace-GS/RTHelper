@@ -1,7 +1,10 @@
-package dev.wallacegs.rtpocketguide
+package dev.wallacegs.rtpocketguide.ui.chart
 
 import android.graphics.RectF
 import com.robinhood.spark.SparkAdapter
+import dev.wallacegs.rtpocketguide.data.CovidData
+import dev.wallacegs.rtpocketguide.ui.chart.Metric
+import dev.wallacegs.rtpocketguide.ui.chart.TimeScale
 
 class CovidSparkAdapter(private val dailyData: List<CovidData>) : SparkAdapter() {
 

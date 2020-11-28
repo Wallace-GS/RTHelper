@@ -1,16 +1,12 @@
-package dev.wallacegs.rtpocketguide
+package dev.wallacegs.rtpocketguide.ui
 
-import android.app.Activity
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.inputmethod.InputMethodManager
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import dev.wallacegs.rtpocketguide.R
 import dev.wallacegs.rtpocketguide.databinding.ActivityMainBinding
 
 

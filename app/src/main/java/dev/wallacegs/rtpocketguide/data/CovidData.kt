@@ -1,4 +1,4 @@
-package dev.wallacegs.rtpocketguide
+package dev.wallacegs.rtpocketguide.data
 
 import java.util.*
 
